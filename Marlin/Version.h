@@ -41,7 +41,7 @@
  * here we define this default string as the date where the latest release
  * version was tagged.
  */
-//#define STRING_DISTRIBUTION_DATE "2019-07-10"
+#define STRING_DISTRIBUTION_DATE "2020-06-19"
 
 /**
  * Defines a generic printer name to be output to the LCD after booting Marlin.
@@ -66,11 +66,11 @@
  * documentation about a specific Marlin release.
  */
 //#define WEBSITE_URL "http://marlinfw.org"
-
+#define WEBSITE_URL "https://seckit3dp.design"
 /**
  * Set the vendor info the serial USB interface, if changable
  * Currently only supported by DUE platform
  */
 //#define  USB_DEVICE_VENDOR_ID           0x0000
 //#define  USB_DEVICE_PRODUCT_ID          0x0000
-//#define  USB_DEVICE_MANUFACTURE_NAME    WEBSITE_URL
+#define  USB_DEVICE_MANUFACTURE_NAME    WEBSITE_URL
