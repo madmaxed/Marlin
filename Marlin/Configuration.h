@@ -38,7 +38,7 @@
 // Remove the object and binary output direcotry (/.pio) before rebuild if you switch between 2209 and 2130!
 #define SK_DRIVER     2209              // 2209 or 2130
 
-#define SK_MODEL      SK_GO2_USING_BMG   // Use one of the above defininition to change extruder setup
+#define SK_MODEL      SK_GO2_USING_HEMERA   // Use one of the above defininition to change extruder setup
 #define SK_Z_HEIGHT   350               // SK-Mini: 250 or 300. SK-Go: 300 or 350.
 #define SK_STEPPER    9                // 18 for 1.8 degree, 9 for 0.9 degree stepper
 
@@ -179,7 +179,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_BIGTREE_SKR_V1_3
+  #define MOTHERBOARD BOARD_BTT_SKR_V1_3
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
@@ -659,9 +659,10 @@
  */
 #define PREVENT_LENGTHY_EXTRUDE
 #ifdef BOWDEN_EXTRUSION
-#define EXTRUDE_MAXLENGTH 700
+  #define EXTRUDE_MAXLENGTH 700
 #else
-#define EXTRUDE_MAXLENGTH 200
+  #define EXTRUDE_MAXLENGTH 200
+#endif
 
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
