@@ -38,7 +38,7 @@
 // Remove the object and binary output direcotry (/.pio) before rebuild if you switch between 2209 and 2130!
 #define SK_DRIVER     2209              // 2209 or 2130
 
-#define SK_MODEL      SK_GO_USING_TITAN   // Use one of the above defininition to change extruder setup
+#define SK_MODEL      SK_GO2_USING_BMG   // Use one of the above defininition to change extruder setup
 #define SK_Z_HEIGHT   350               // SK-Mini: 250 or 300. SK-Go: 300 or 350.
 #define SK_STEPPER    9                // 18 for 1.8 degree, 9 for 0.9 degree stepper
 
