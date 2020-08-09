@@ -42,7 +42,7 @@
 #define SK_Z_HEIGHT   350               // SK-Mini: 250 or 300. SK-Go: 300 or 350.
 #define SK_STEPPER    9                // 18 for 1.8 degree, 9 for 0.9 degree stepper
 
-#define SK_REVERSE_CABLE_SEQUENCE       false   // if steppers turn reversely, either set this definition or change cable sequence
+#define SK_REVERSE_CABLE_SEQUENCE       true   // if steppers turn reversely, either set this definition or change cable sequence
 
 #define SK_USTEPS     16                // microsteps used in firmware. TMC drivers will interpolate to 256.
 
@@ -179,8 +179,8 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_BTT_SKR_V1_3
-  //#define MOTHERBOARD BOARD_BTT_SKR_PRO_V1_2
+  //#define MOTHERBOARD BOARD_BTT_SKR_V1_3
+  #define MOTHERBOARD BOARD_BTT_SKR_PRO_V1_2
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
@@ -1032,8 +1032,8 @@
  *
  */
 //#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
-#define Z_MIN_PROBE_PIN P1_24 // Ernest for SK-Mini, P1_24 is Z max endstop. Don't know why Z_MAX_PIN not working.
-
+//#define Z_MIN_PROBE_PIN P1_24 // Ernest for SK-Mini, P1_24 is Z max endstop. Don't know why Z_MAX_PIN not working.
+#define Z_MIN_PROBE_PIN PA2 // SK-Go2 Default pin for SKR Pro V1.2
 /**
  * Probe Type
  *
@@ -1268,7 +1268,7 @@
   #if SK_BELTED_Z_EXP
     #define INVERT_Z_DIR true
   #else
-    #define INVERT_Z_DIR false
+    #define INVERT_Z_DIR true
   #endif
 
   #if (SK_MODEL % 2 == 0) // BMG
@@ -1974,7 +1974,7 @@
 //
 //  Set this option if CLOCKWISE causes values to DECREASE
 //
-#define REVERSE_ENCODER_DIRECTION
+//#define REVERSE_ENCODER_DIRECTION
 
 //
 // This option reverses the encoder direction for navigating LCD menus.
