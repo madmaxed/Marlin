@@ -98,7 +98,6 @@
   #define Z_MIN_PROBE_PIN                   PA2
 #endif
 
-//
 // Filament Runout Sensor
 //
 #ifndef FIL_RUNOUT_PIN
