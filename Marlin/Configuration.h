@@ -38,11 +38,11 @@
 // Remove the object and binary output direcotry (/.pio) before rebuild if you switch between 2209 and 2130!
 #define SK_DRIVER     2209              // 2209 or 2130
 
-#define SK_MODEL      SK_GO2_USING_BMG   // Use one of the above defininition to change extruder setup
+#define SK_MODEL      SK_GO2_USING_BMG  // Use one of the above defininition to change extruder setup
 #define SK_Z_HEIGHT   350               // SK-Mini: 250 or 300. SK-Go: 300 or 350.
-#define SK_STEPPER    9                // 18 for 1.8 degree, 9 for 0.9 degree stepper
+#define SK_STEPPER    9                 // 18 for 1.8 degree, 9 for 0.9 degree stepper
 
-#define SK_REVERSE_CABLE_SEQUENCE       true   // if steppers turn reversely, either set this definition or change cable sequence
+#define SK_REVERSE_CABLE_SEQUENCE true // if steppers turn reversely, either set this definition or change cable sequence
 
 #define SK_USTEPS     16                // microsteps used in firmware. TMC drivers will interpolate to 256.
 
@@ -1157,7 +1157,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 25, 8, 0 }
+#define NOZZLE_TO_PROBE_OFFSET {-18, 10, -1.5 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1737,6 +1737,10 @@
 #define PREHEAT_2_TEMP_BED    100
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
+#define PREHEAT_3_LABEL       "PETG"
+#define PREHEAT_3_TEMP_HOTEND 230
+#define PREHEAT_3_TEMP_BED    85
+#define PREHEAT_3_FAN_SPEED     0 // Value from 0 to 255
 /**
  * Nozzle Park
  *
