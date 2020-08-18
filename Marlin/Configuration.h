@@ -1161,7 +1161,7 @@
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 10
+#define PROBING_MARGIN 20
 
 // X and Y axis travel speed (mm/m) between probes
 #ifdef BOWDEN_EXTRUSION
@@ -1231,7 +1231,7 @@
  */
 #define PROBING_HEATERS_OFF       // Turn heaters off when probing
 #if ENABLED(PROBING_HEATERS_OFF)
-  #define WAIT_FOR_BED_HEATER     // Wait for bed to heat back up between probes (to improve accuracy)
+  //#define WAIT_FOR_BED_HEATER     // Wait for bed to heat back up between probes (to improve accuracy)
 #endif
 #define PROBING_FANS_OFF          // Turn fans off when probing
 //#define PROBING_STEPPERS_OFF      // Turn steppers off (unless needed to hold position) when probing
@@ -1272,7 +1272,7 @@
   #endif
 
   #if (SK_MODEL % 2 == 0) // BMG
-    #define INVERT_E0_DIR false
+    #define INVERT_E0_DIR true
   #else
     #define INVERT_E0_DIR true
   #endif
@@ -1339,8 +1339,8 @@
   //         (X_MIN_POS, X_MIN_POS), for example (-5, -20), is the homing position
   //         and will be shwon in the display after homing.
   //         This can be changed according to your assembly.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS -20
+  #define X_MIN_POS -6
+  #define Y_MIN_POS -10
 #endif
 #define Z_MIN_POS 0
 #define X_MAX_POS SK_X_BED_SIZE
@@ -1383,7 +1383,7 @@
  * RAMPS-based boards use SERVO3_PIN for the first runout sensor.
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  */
-#define FILAMENT_RUNOUT_SENSOR
+//#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define NUM_RUNOUT_SENSORS   1     // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
   #define FIL_RUNOUT_STATE     LOW   // Pin state indicating that filament is NOT present.
