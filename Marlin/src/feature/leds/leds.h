@@ -104,7 +104,11 @@ typedef struct LEDColor {
   bool operator!=(const LEDColor &right) { return !operator==(right); }
 
   bool is_off() const {
-    return 3 > r + g + b + TERN0(HAS_WHITE_LED, w);
+    return 3 > r + g + b
+      #if HAS_WHITE_LED
+        + w
+      #endif
+    ;
   }
 } LEDColor;
 
@@ -152,7 +156,7 @@ public:
     #endif
   );
 
-  static inline void set_color(uint8_t r, uint8_t g, uint8_t b
+  inline void set_color(uint8_t r, uint8_t g, uint8_t b
     #if HAS_WHITE_LED
       , uint8_t w=0
       #if ENABLED(NEOPIXEL_LED)

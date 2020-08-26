@@ -81,7 +81,7 @@ constexpr uint8_t epps = ENCODER_PULSES_PER_STEP;
   #endif
   void MarlinUI::buzz(const long duration, const uint16_t freq) {
     #if ENABLED(PCA9632_BUZZER)
-      PCA9632_buzz(duration, freq);
+      pca9632_buzz(duration, freq);
     #elif USE_BEEPER
       buzzer.tone(duration, freq);
     #endif
@@ -150,7 +150,7 @@ constexpr uint8_t epps = ENCODER_PULSES_PER_STEP;
     volatile uint8_t MarlinUI::slow_buttons;
   #endif
   #if HAS_TOUCH_XPT2046
-    #include "touch/touch_buttons.h"
+    #include "touch/xpt2046.h"
     bool MarlinUI::on_edit_screen = false;
   #endif
 #endif
@@ -371,6 +371,10 @@ void MarlinUI::init() {
     #endif
 
   #endif // HAS_SHIFT_ENCODER
+
+  #if ENABLED(SDSUPPORT) && PIN_EXISTS(SD_DETECT)
+    SET_INPUT_PULLUP(SD_DETECT_PIN);
+  #endif
 
   #if HAS_ENCODER_ACTION && HAS_SLOW_BUTTONS
     slow_buttons = 0;
@@ -934,8 +938,6 @@ void MarlinUI::update() {
                 if (encoderStepRate >= ENCODER_100X_STEPS_PER_SEC)     encoderMultiplier = 100;
                 else if (encoderStepRate >= ENCODER_10X_STEPS_PER_SEC) encoderMultiplier = 10;
 
-                // Enable to output the encoder steps per second value
-                //#define ENCODER_RATE_MULTIPLIER_DEBUG
                 #if ENABLED(ENCODER_RATE_MULTIPLIER_DEBUG)
                   SERIAL_ECHO_START();
                   SERIAL_ECHOPAIR("Enc Step Rate: ", encoderStepRate);
