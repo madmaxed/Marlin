@@ -38,7 +38,7 @@
 // Remove the object and binary output direcotry (/.pio) before rebuild if you switch between 2209 and 2130!
 #define SK_DRIVER     2209              // 2209 or 2130
 
-#define SK_MODEL      SK_GO2_USING_BMG  // Use one of the above defininition to change extruder setup
+#define SK_MODEL      SK_GO2_USING_HEMERA  // Use one of the above defininition to change extruder setup
 #define SK_Z_HEIGHT   350               // SK-Mini: 250 or 300. SK-Go: 300 or 350.
 #define SK_STEPPER    9                 // 18 for 1.8 degree, 9 for 0.9 degree stepper
 
@@ -187,8 +187,12 @@
 //#define CUSTOM_MACHINE_NAME "3D Printer"
 #if (SK_MODEL <= SK_MINI_USING_TITAN)
   #define CUSTOM_MACHINE_NAME "SK-Mini"
-#else
+#elif((SK_MODEL == SK_GO_USING_BMG) || (SK_MODEL == SK_GO_USING_TITAN))
   #define CUSTOM_MACHINE_NAME "SK-Go"
+#elif((SK_MODEL == SK_GO2_USING_BMG) || (SK_MODEL == SK_GO2_USING_TITAN))
+  #define CUSTOM_MACHINE_NAME "SK-Go2"
+#elif((SK_MODEL == SK_GO2_USING_HEMERA))
+  #define CUSTOM_MACHINE_NAME "SK-Go2 Hemera"
 #endif
 
 // Printer's unique ID, used by some programs to differentiate between machines.
@@ -473,7 +477,8 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 1
+//#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 5
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -517,7 +522,8 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 275
+//#define HEATER_0_MAXTEMP 275
+#define HEATER_0_MAXTEMP 300
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -607,7 +613,7 @@
 #if ENABLED(PIDTEMPBED)
   //#define MIN_BED_POWER 0
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
-  #if (SK_MODEL <= SK_MINI_USING_TITAN)
+  #if ((SK_MODEL <= SK_MINI_USING_TITAN))
     // SK-Mini 24V MK3 200x200x3 aluminum bed with magnetic PEI surface
     #define DEFAULT_bedKp 105.92
     #define DEFAULT_bedKi 11.60
@@ -876,15 +882,24 @@
 #endif
 
 
-#if (SK_MODEL % 2 == 0) // BMG
+#if (SK_MODEL % 2 == 0 && (SK_MODEL != SK_GO2_USING_HEMERA)) // BMG
 
   // Bontech recommends 413 for BMG extruder @ 1.8 degree stepper, 16 microsteps
   // 413 / 2 * 0.95 = 196.2  (2 is for 8 microsteps, 0.9 to reduce extrusion)
+  
 
   #if (SK_USTEPS == 8)
     #define STEPS_E 196.2
-  #elif (SK_USTEPS == 16)
-    #define STEPS_E 392.4
+  #elif ((SK_USTEPS == 16) && )
+    #define STEPS_E 413
+  #endif
+
+// E3D recommends 409 @ 16 microsteps for Hemera
+#elif(SK_MODEL == SK_GO2_USING_HEMERA)
+    #if (SK_USTEPS == 8)
+    #define STEPS_E 196.2
+  #elif ((SK_USTEPS == 16))
+    #define STEPS_E 409
   #endif
 
 #else // TITAN
@@ -1271,10 +1286,12 @@
     #define INVERT_Z_DIR true
   #endif
 
-  #if (SK_MODEL % 2 == 0) // BMG
+  #if (SK_MODEL % 2 == 0 && (SK_MODEL != SK_GO2_USING_HEMERA)) // BMG
     #define INVERT_E0_DIR true
+  #elif (SK_MODEL == SK_GO2_USING_HEMERA)
+    #define INVERT_E0_DIR false
   #else
-    #define INVERT_E0_DIR true
+    #define INVERT_E0_DIR false
   #endif
 
 #else
@@ -1288,12 +1305,15 @@
     #define INVERT_Z_DIR true
   #endif
 
-  #if (SK_MODEL % 2 == 0) // BMG
+  #if (SK_MODEL % 2 == 0 (SK_MODEL != SK_GO2_USING_HEMERA)) // BMG
     #define INVERT_E0_DIR true
+  #elif (SK_MODEL == SK_GO2_USING_HEMERA)
+    #define INVERT_E0_DIR false
   #else
     #define INVERT_E0_DIR false
   #endif
 #endif
+
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -1732,15 +1752,20 @@
 #define PREHEAT_1_TEMP_BED     55
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
-#define PREHEAT_2_LABEL       "ABS"
+#define PREHEAT_2_LABEL       "PETG"
 #define PREHEAT_2_TEMP_HOTEND 230
-#define PREHEAT_2_TEMP_BED    100
+#define PREHEAT_2_TEMP_BED    85
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
-#define PREHEAT_3_LABEL       "PETG"
-#define PREHEAT_3_TEMP_HOTEND 230
-#define PREHEAT_3_TEMP_BED    85
+#define PREHEAT_3_LABEL       "FLEX"
+#define PREHEAT_3_TEMP_HOTEND 240
+#define PREHEAT_3_TEMP_BED    50
 #define PREHEAT_3_FAN_SPEED     0 // Value from 0 to 255
+
+#define PREHEAT_4_LABEL       "ASA"
+#define PREHEAT_4_TEMP_HOTEND 260
+#define PREHEAT_4_TEMP_BED    105
+#define PREHEAT_4_FAN_SPEED     0 // Value from 0 to 255
 /**
  * Nozzle Park
  *
