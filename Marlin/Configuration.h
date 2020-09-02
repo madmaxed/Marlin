@@ -559,9 +559,9 @@
     #define DEFAULT_Ki 1.84
     #define DEFAULT_Kd 48.31
   #else
-    #define DEFAULT_Kp 15.99
-    #define DEFAULT_Ki 1.02
-    #define DEFAULT_Kd 62.42
+    #define DEFAULT_Kp 22.84
+    #define DEFAULT_Ki 2.3
+    #define DEFAULT_Kd 56.65
   #endif
 
   // Ultimaker
@@ -620,9 +620,9 @@
     #define DEFAULT_bedKd 241.74
   #else
     // SK-Go 110V 400W silicon heater
-    #define DEFAULT_bedKp 50.07
-    #define DEFAULT_bedKi 5.74
-    #define DEFAULT_bedKd 291.36
+    #define DEFAULT_bedKp 112.80
+    #define DEFAULT_bedKi 19.86
+    #define DEFAULT_bedKd 427.12
   #endif
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
@@ -1289,7 +1289,7 @@
   #if (SK_MODEL % 2 == 0 && (SK_MODEL != SK_GO2_USING_HEMERA)) // BMG
     #define INVERT_E0_DIR true
   #elif (SK_MODEL == SK_GO2_USING_HEMERA)
-    #define INVERT_E0_DIR false
+    #define INVERT_E0_DIR true
   #else
     #define INVERT_E0_DIR false
   #endif
@@ -1359,8 +1359,8 @@
   //         (X_MIN_POS, X_MIN_POS), for example (-5, -20), is the homing position
   //         and will be shwon in the display after homing.
   //         This can be changed according to your assembly.
-  #define X_MIN_POS -6
-  #define Y_MIN_POS -10
+  #define X_MIN_POS 0
+  #define Y_MIN_POS -5
 #endif
 #define Z_MIN_POS 0
 #define X_MAX_POS SK_X_BED_SIZE
