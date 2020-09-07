@@ -659,7 +659,7 @@
 
   // Safety: The probe needs time to recognize the command.
   //         Minimum command delay (ms). Enable and increase if needed.
-  #define BLTOUCH_DELAY 500
+  #define BLTOUCH_DELAY 375
 
   /**
    * Settings for BLTOUCH Classic 1.2, 1.3 or BLTouch Smart 1.0, 2.0, 2.2, 3.0, 3.1, and most clones:
@@ -1658,7 +1658,7 @@
  * the probe to be unable to reach any points.
  */
 #if PROBE_SELECTED && !IS_KINEMATIC
-  #define PROBING_MARGIN_LEFT 10
+  #define PROBING_MARGIN_LEFT 35
   #define PROBING_MARGIN_RIGHT 35
   #define PROBING_MARGIN_FRONT 10
   #define PROBING_MARGIN_BACK 10
@@ -1668,8 +1668,12 @@
   // Override the mesh area if the automatic (max) area is too large
   //#define MESH_MIN_X MESH_INSET
   //#define MESH_MIN_Y MESH_INSET
+  #define MESH_MIN_X 35
+  #define MESH_MIN_Y 10
   //#define MESH_MAX_X X_BED_SIZE - (MESH_INSET)
   //#define MESH_MAX_Y Y_BED_SIZE - (MESH_INSET)
+  #define MESH_MAX_X X_BED_SIZE - (MESH_MIN_X)
+  #define MESH_MAX_Y Y_BED_SIZE - (MESH_MIN_Y)
 #endif
 
 /**
@@ -2539,8 +2543,8 @@
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
     // TMC2209: 0...255. TMC2130: -64...63
         #if (SK_DRIVER == 2209) 
-      #define X_STALL_SENSITIVITY  140
-      #define Y_STALL_SENSITIVITY  140
+      #define X_STALL_SENSITIVITY  45
+      #define Y_STALL_SENSITIVITY  45
     #elif (SK_DRIVER == 2130)
       #if (SK_STEPPER == 9)
       #define X_STALL_SENSITIVITY  0
