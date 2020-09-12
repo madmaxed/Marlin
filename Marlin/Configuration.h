@@ -1346,7 +1346,7 @@
 #define SK_X_BED_SIZE  200
 #define SK_Y_BED_SIZE  200
 #else
-#define SK_X_BED_SIZE  310
+#define SK_X_BED_SIZE  305
 #define SK_Y_BED_SIZE  310
 #endif
 
