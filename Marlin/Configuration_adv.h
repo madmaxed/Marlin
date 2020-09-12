@@ -1660,7 +1660,7 @@
 #if PROBE_SELECTED && !IS_KINEMATIC
   #define PROBING_MARGIN_LEFT 35
   #define PROBING_MARGIN_RIGHT 35
-  #define PROBING_MARGIN_FRONT 10
+  #define PROBING_MARGIN_FRONT 15
   #define PROBING_MARGIN_BACK 10
 #endif
 
@@ -1669,7 +1669,7 @@
   //#define MESH_MIN_X MESH_INSET
   //#define MESH_MIN_Y MESH_INSET
   #define MESH_MIN_X 35
-  #define MESH_MIN_Y 10
+  #define MESH_MIN_Y 15
   //#define MESH_MAX_X X_BED_SIZE - (MESH_INSET)
   //#define MESH_MAX_Y Y_BED_SIZE - (MESH_INSET)
   #define MESH_MAX_X X_BED_SIZE - (MESH_MIN_X)
@@ -2277,7 +2277,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT     600
+    #define Z_CURRENT     650
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     SK_USTEPS
     #define Z_RSENSE          0.11

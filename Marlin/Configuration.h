@@ -899,7 +899,8 @@
     #if (SK_USTEPS == 8)
     #define STEPS_E 196.2
   #elif ((SK_USTEPS == 16))
-    #define STEPS_E 409
+    //#define STEPS_E 409
+    #define STEPS_E 397.09
   #endif
 
 #else // TITAN
@@ -935,7 +936,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 100, 2000 }
+#define DEFAULT_MAX_ACCELERATION      { 9000, 9000, 500, 10000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1172,7 +1173,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET {-30.3, -11.75, -1.25 }
+#define NOZZLE_TO_PROBE_OFFSET {-30.3, -11.75, -1.5 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
