@@ -24,10 +24,9 @@
 
 #if HAS_SPI_FLASH
 
-#include "W25Qxx.h"
 #include <SPI.h>
 
-W25QXXFlash W25QXX;
+#include "W25Qxx.h"
 
 #ifndef SPI_FLASH_MISO_PIN
   #define SPI_FLASH_MISO_PIN W25QXX_MISO_PIN
