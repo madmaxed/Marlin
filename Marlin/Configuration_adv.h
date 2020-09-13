@@ -1660,20 +1660,21 @@
 #if PROBE_SELECTED && !IS_KINEMATIC
   #define PROBING_MARGIN_LEFT 35
   #define PROBING_MARGIN_RIGHT 35
-  #define PROBING_MARGIN_FRONT 15
-  #define PROBING_MARGIN_BACK 10
+  #define PROBING_MARGIN_FRONT 20
+  #define PROBING_MARGIN_BACK 20
 #endif
 
 #if EITHER(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL)
   // Override the mesh area if the automatic (max) area is too large
-  //#define MESH_MIN_X MESH_INSET
-  //#define MESH_MIN_Y MESH_INSET
-  #define MESH_MIN_X 35
-  #define MESH_MIN_Y 15
-  //#define MESH_MAX_X X_BED_SIZE - (MESH_INSET)
-  //#define MESH_MAX_Y Y_BED_SIZE - (MESH_INSET)
-  #define MESH_MAX_X X_BED_SIZE - (MESH_MIN_X)
-  #define MESH_MAX_Y Y_BED_SIZE - (MESH_MIN_Y)
+  #define MESH_MIN_X MESH_INSET
+  #define MESH_MIN_Y MESH_INSET
+  //#define MESH_MIN_X 40
+  //#define MESH_MIN_Y 20
+  #define MESH_MAX_X X_BED_SIZE - (MESH_INSET)
+  #define MESH_MAX_Y Y_BED_SIZE - (MESH_INSET)
+  //#define MESH_MAX_X X_BED_SIZE - (MESH_MIN_X)
+  //#define MESH_MAX_Y Y_BED_SIZE - (MESH_MIN_Y)
+  
 #endif
 
 /**

@@ -1361,7 +1361,7 @@
   //         and will be shwon in the display after homing.
   //         This can be changed according to your assembly.
   #define X_MIN_POS 0
-  #define Y_MIN_POS -5
+  #define Y_MIN_POS -5  
 #endif
 #define Z_MIN_POS 0
 #define X_MAX_POS SK_X_BED_SIZE
@@ -1552,7 +1552,7 @@
 #else
   #define MESH_INSET 35              // Set Mesh bounds as an inset region of the bed
 #endif
-  #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
+  #define GRID_MAX_POINTS_X 5      // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   #define UBL_MESH_EDIT_MOVES_Z     // Sophisticated users prefer no movement of nozzle
